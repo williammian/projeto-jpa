@@ -17,3 +17,15 @@ Uma entidade deve usar as anotações @Entity e @Id
 @GeneratedValue não é obrigatório, mas pode ser útil para definir uma chave auto-increment
 
 ---------------------------------------------------
+
+A JPA sincroniza o estado de uma entidade gerenciada com o banco de dados.
+
+Isto é, o SQL será gerado baseado na diferença entre a entidade em memória e o banco de dados.
+
+Para essa sincronização acontecer, a entidade precisa estar gerenciada (Managed).
+
+Os estados de uma entidade são: Managed, Detached, Transient e Removed.
+
+Os métodos do EntityManager, como persist, merge ou remove alteram o estado da entidade.
+
+---------------------------------------------------
