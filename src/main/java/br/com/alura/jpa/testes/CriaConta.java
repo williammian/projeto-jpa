@@ -1,5 +1,7 @@
 package br.com.alura.jpa.testes;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +18,7 @@ public class CriaConta {
         conta.setTitular("Leonardo");
         conta.setNumero(1234);
         conta.setAgencia(4321);
-        conta.setSaldo(1000.00);
+        conta.setSaldo(new BigDecimal(1000.00));
         
         em.getTransaction().begin();
         

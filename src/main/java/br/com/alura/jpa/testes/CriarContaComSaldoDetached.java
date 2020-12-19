@@ -1,5 +1,7 @@
 package br.com.alura.jpa.testes;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +18,7 @@ public class CriarContaComSaldoDetached {
         conta.setTitular("Márcia");
         conta.setNumero(12345);
         conta.setAgencia(54321);
-        conta.setSaldo(100.0);
+        conta.setSaldo(new BigDecimal(100.0));
 
         em.getTransaction().begin();
 
@@ -27,7 +29,7 @@ public class CriarContaComSaldoDetached {
 
         EntityManager em2 = emf.createEntityManager();
         System.out.println("ID da Conta da Márcia:" + conta.getId());
-        conta.setSaldo(500.0);
+        conta.setSaldo(new BigDecimal(500.0));
 
         em2.getTransaction().begin();
 

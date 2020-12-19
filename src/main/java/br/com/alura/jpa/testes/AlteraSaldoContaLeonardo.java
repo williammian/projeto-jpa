@@ -1,5 +1,7 @@
 package br.com.alura.jpa.testes;
 
+import java.math.BigDecimal;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,7 +20,7 @@ public class AlteraSaldoContaLeonardo {
         
         em.getTransaction().begin();
 
-        contaDoLeonardo.setSaldo(20.0);
+        contaDoLeonardo.setSaldo(new BigDecimal(20.0));
 
         em.getTransaction().commit();
 
