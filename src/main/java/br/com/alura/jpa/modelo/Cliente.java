@@ -1,13 +1,19 @@
 package br.com.alura.jpa.modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(name = "cliente", 
+	uniqueConstraints = {@UniqueConstraint(name = "uk_cliente_nome", columnNames= {"nome"}),
+			@UniqueConstraint(name = "uk_cliente_conta", columnNames= {"conta_id"})})
 public class Cliente {
 	
 	@Id
@@ -20,7 +26,7 @@ public class Cliente {
     
     private String endereco;
     
-    @JoinColumn(unique = true)
+    @JoinColumn(name = "conta_id", foreignKey = @ForeignKey(name = "fk_cliente_conta"))
     @OneToOne
     private Conta conta;
     

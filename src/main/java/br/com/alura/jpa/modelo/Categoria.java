@@ -4,8 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(name = "categoria", 
+	uniqueConstraints = {@UniqueConstraint(name = "uk_categoria_nome", columnNames= {"nome"})})
 public class Categoria {
 
     @Id
@@ -26,5 +30,10 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	@Override
+    public String toString() {
+        return nome + " - " + id;
+    }
 
 }

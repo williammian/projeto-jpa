@@ -7,13 +7,18 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "movimentacao")
 public class Movimentacao {
 
     @Id
@@ -30,9 +35,13 @@ public class Movimentacao {
     private BigDecimal valor;
     
     @ManyToOne
+    @JoinColumn(name = "conta_id", foreignKey = @ForeignKey(name = "fk_movimentacao_conta"))
     private Conta conta;
     
     @ManyToMany
+    @JoinTable(name = "movimentacao_categoria", 
+    	joinColumns = @JoinColumn(name = "movimentacao_id", foreignKey = @ForeignKey(name = "fk_movimentacao_categoria_1")), 
+    	inverseJoinColumns = @JoinColumn(name = "categoria_id", foreignKey = @ForeignKey(name = "fk_movimentacao_categoria_2")))
     private List<Categoria> categorias;
 
 	public Long getId() {
