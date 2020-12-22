@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,8 @@ public class Conta {
     
     private BigDecimal saldo;
     
-    @OneToMany(mappedBy = "conta") //relacionamento bidirecional
+    //@OneToMany(mappedBy = "conta") //relacionamento bidirecional, padrão lazy
+    @OneToMany(mappedBy = "conta", fetch = FetchType.EAGER)
     private List<Movimentacao> movimentacoes;
     
 	public Long getId() {
