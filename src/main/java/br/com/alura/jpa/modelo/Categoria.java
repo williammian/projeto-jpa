@@ -18,6 +18,13 @@ public class Categoria {
     
     private String nome;
     
+	public Categoria() {
+		super();
+	}
+	public Categoria(String nome) {
+		this();
+		this.nome = nome;
+	}
 	public Long getId() {
 		return id;
 	}
