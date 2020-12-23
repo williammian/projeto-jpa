@@ -12,6 +12,7 @@ public class MovimentacaoDao {
     private EntityManager em;
 	
 	public MovimentacaoDao(EntityManager em) {
+		super();
 		this.em = em;
 	}
 
@@ -25,6 +26,11 @@ public class MovimentacaoDao {
         String jpql = "Select Sum(m.valor) from Movimentacao m";
         TypedQuery<BigDecimal> query = em.createQuery(jpql, BigDecimal.class);
         return query.getSingleResult();
+	}
+	
+	public List<MediaComData> getMediaDiariaDasMovimentacoesNamedQuery() {
+        TypedQuery<MediaComData> query = em.createNamedQuery("mediaDiariaMovimentacoes", MediaComData.class);
+        return query.getResultList();
 	}
 
 }

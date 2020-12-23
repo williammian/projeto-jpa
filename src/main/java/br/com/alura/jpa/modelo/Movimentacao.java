@@ -15,7 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+@NamedQuery(name = "mediaDiariaMovimentacoes", 
+	query = "Select new br.com.alura.jpa.modelo.MediaComData(Avg(m.valor), day(m.data), month(m.data)) from Movimentacao m group by day(m.data), month(m.data), year(m.data)")
 
 @Entity
 @Table(name = "movimentacao")

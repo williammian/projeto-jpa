@@ -6,7 +6,6 @@ public class MediaComData {
 	private Integer mes;
 	
 	public MediaComData(Double valor, Integer dia, Integer mes) {
-		super();
 		this.valor = valor;
 		this.dia = dia;
 		this.mes = mes;
