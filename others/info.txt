@@ -110,3 +110,19 @@ NamedQuery tem uma vantagem pois é analisada ao criar o EntityManager
 
 ----------------------------------------------------------
 
+A JPQL deve ser usada para queries fixas que sempre buscam pelos mesmo parâmetros
+
+Quando a query é dinâmica o JPQL perde a legibilidade e o código fica mais difícil de se manter
+
+Para solucionar isso foi criado uma outra API de pesquisa, a Criteria API
+
+A criteria permite definir queries apenas com chamadas de métodos e assim possui mais flexibilidade quando os parâmetros variam
+os protagonistas da criteria são:
+
+CriteriaQuery - a query em si, que possui os métodos principais como select(..), from(..) e where(..)
+
+Criteriabuilder - uma classe auxiliar para definir filtros e projeções
+
+Root- para definir os caminhas para atributos (m.data)
+
+-------------------------------------------------------------
